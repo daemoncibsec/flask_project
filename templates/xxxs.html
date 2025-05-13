@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Buscar XXXS{% endblock %}
+{% block content %}
+    <canvas id="c"></canvas>
+    <div class="form-section">
+        <h2 class="text-medium">Buscar vulnerabilidad OWASP</h2>
+        <form method="POST" class="search-form">
+            <input type="text" name="nombre_xxx" placeholder="Ej: Injection, SSRF..." value="{{ termino }}" class="form-input">
+            <button type="submit" class="btn">Buscar</button>
+        </form>
+        {% if resultados %}
+            <div style="margin-top: 30px;">
+                <h3 class="text-medium">Resultados:</h3>
+                <div class="table-container">
+                    <table class="transparent-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Impacto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in resultados %}
+                            <tr>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.impacto }}</td>
+                                <td>
+                                    <a href="{{ url_for('detalle_xxx', identificador=item.id) }}" class="btn-sm">Detalle</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
