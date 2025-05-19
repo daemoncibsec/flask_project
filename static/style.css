@@ -270,10 +270,10 @@ img {
 }
 
 #social-links a img {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     transition: transform 0.3s ease;
-    filter: drop-shadow(0 0 10px #fff);
+    filter: drop-shadow(0 0 10px #000);
 }
 
 #social-links a img:hover {
@@ -281,30 +281,88 @@ img {
 }
 
 .table-container {
+  margin-top: 10px;
   display: flex;
-  justify-content: center; 
-  align-items: center;     
-  height: 100vh;     
-  background-color: #f0f0f0;
+  justify-content: center;
+  background: transparent;
 }
 
-table {
-  right: 50%;
-  width: 60%;
-  border-collapse: collapse;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+.transparent-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.3); /* semi-transparent */
+    color: white;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
 }
 
-th, td {
-  padding: 12px 20px;
-  text-align: left;
+.transparent-table th, .transparent-table td {
+    padding: 6px 15px;
+    border-bottom: 0px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
 }
 
-th {
-  color: white;
+.transparent-table th {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
+
+.transparent-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 
 .table-content {
   border: 1px solid #ccc;
+}
+
+.form-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    max-width: 400px;
+}
+
+
+.form-input {
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #f4427d;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-family: 'Inconsolata', arial;
+}
+
+.form-input::placeholder {
+    color: #bbb;
+}
+
+p, h3, h4 {
+    font-family: 'Inconsolata', arial;
+    color: white;
+}
+
+#button {
+    margin-top: 30px;
+    font-family: 'Inconsolata', arial;
+    color: white;
 }

@@ -4,8 +4,14 @@
     <canvas id="c"></canvas>
     <div class="form-section">
         <h2 class="text-medium">Buscar vulnerabilidad OWASP</h2>
-        <form method="POST" class="search-form">
-            <input type="text" name="nombre_xxx" placeholder="Ej: Injection, SSRF..." value="{{ termino }}" class="form-input">
+	<form method="POST" class="search-form">
+            <input type="text" name="nombre_xxx" placeholder="Ej: Injection, SSRF..." class="form-input" value="{{ termino }}">
+            <select name="impacto" class="form-input">
+                <option value="">-- Todos los impactos --</option>
+                {% for imp in impactos %}
+                        <option value="{{ imp }}" {% if imp == impacto_seleccionado %}selected{% endif %}>{{ imp }}</option>
+                {% endfor %}
+            </select>
             <button type="submit" class="btn">Buscar</button>
         </form>
         {% if resultados %}
