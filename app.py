@@ -1,35 +1,27 @@
-from flask import Flask, render_template, abort, redirect, request
-import json
-
-app = Flask(__name__)
-
-def owasp10():
-    with open("data/owasp.json", encoding='utf-8') as file:
-        return json.load(file)
+from flask import Flask, render_template, abort, redirect
+app = Flask(__name__)	
 
 @app.route('/')
 def index():
     return render_template("index.html")
 
-@app.route('/xxxs', methods=['GET', 'POST'])
-def xxxs():
-    resultados = []
-    datos = owasp10()
-    if request.method == 'POST':
-        termino = request.form.get('nombre_xxx', '').lower()
-        if termino:
-            resultados = [v for v in datos if v['nombre'].lower().startswith(termino)]
-        else:
-            resultados = datos
-    return render_template('xxxs.html', resultados=resultados)
+@app.route('/posts')
+def posts():
+    return render_template("posts.html")
 
-@app.route('/xxx?=<identificador>')
-def detalle_xxx(identificador):
-    datos = owasp10()
-    item = next((v for v in datos if v['id'] == identificador), None)
-    if item is None:
-        error()
-    return render_template('detalle_xxx.html', item=item)
+
+@app.route('/social-media')
+def socialmedia():
+    return render_template("social-media2.html")
+
+@app.route('/notfound')
+def notfound():
+    return render_template("notfound.html")
+
+
+@app.route('/contact')
+def contact():
+    return render_template("contact1.html")
 
 @app.route('/error')
 def error():

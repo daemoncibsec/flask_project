@@ -1,0 +1,70 @@
+{% extends "base1.html" %}
+{% block title %}Daemon - Contact{% endblock %}
+{% block content %}
+    <form action="http://172.22.200.240/resultado.php" method="post" class="my-form">
+        <div class="container">
+            <h1>Contact form</h1>
+            <ul>
+                <li>
+                    <select name="Service">
+                        <option selected disabled>-- Please choose an option --</option>
+                        <option name="Pentesting">Request Pentesting services</option>
+                        <option name="Programming">Request Python programming services</option>
+                        <option name="Other">Other</option>      
+                    </select>
+                </li>
+                <li>
+                    <div class="grid grid-2">
+                        <input type="text" name="Name" id="Name" placeholder="name" required>  
+                        <input type="text" name="Surname" id="surname" placeholder="Surname" required>
+                    </div>
+                </li>
+                <li>
+                    <div class="grid grid-2">
+                        <input type="email" name="Email" id="email" placeholder="Email" required>  
+                        <input type="tel" name="Phone" id="phone" placeholder="Phone">
+                    </div>
+                </li>    
+                <li>
+                    <textarea id="message" name="Message" placeholder="Message"></textarea>
+                </li>   
+                <li>
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I have read and agreed with <a href="">the terms and conditions.</a></label>
+                </li>  
+                <li>
+                    <div class="grid grid-3">
+                        <div class="required-msg">REQUIRED FIELDS</div>
+                            <button class="btn-grid" type="submit" disabled>
+                                <span class="back">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg" alt="">
+                                </span>
+                                <span class="front">SUBMIT</span>
+                            </button>
+                            <button class="btn-grid" type="reset" disabled>
+                                <span class="back">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+                                </span>
+                                <span class="front">RESET</span>
+                            </button> 
+                        </div>
+                    </li>    
+                </ul>
+            </div>
+        </form>
+        <footer>
+            <div class="container">
+                <small>Reference: <a href="http://georgemartsoukos.com/" target="_blank">George Martsoukos</a>
+                </small>
+            </div>
+        </footer>
+    <script>const checkbox = document.querySelector('.my-form input[type="checkbox"]');
+const btns = document.querySelectorAll(".my-form button");
+
+checkbox.addEventListener("change", function() {
+  const checked = this.checked;
+  for (const btn of btns) {
+    checked ? (btn.disabled = false) : (btn.disabled = true);
+  }
+});</script>
+{% endblock %}
